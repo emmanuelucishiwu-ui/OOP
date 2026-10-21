@@ -13,7 +13,7 @@
 # print(type(student3))
 
 
-# create a class called Person with attributes name, age, complexion, and height. Create three instances of the Person class and print their attributes. Also, add a class attribute called legs with a value of 2 and print it for each instance.
+# # create a class called Person with attributes name, age, complexion, and height. Create three instances of the Person class and print their attributes. Also, add a class attribute called legs with a value of 2 and print it for each instance.
 
 # class Person:
 #     legs = 2
@@ -35,7 +35,7 @@
 
 
 
-# create an instnace method for introduction that returns a string introducing the person with their name, age, complexion, and height. 
+# # create an instnace method for introduction that returns a string introducing the person with their name, age, complexion, and height. 
 
 
 # class Person:
@@ -61,38 +61,82 @@
 
 
 
-class Students:
-    ssl = 12
-    def __init__(self, name, age, course):
-        self.name = name
-        self.age = age
-        self.course = course
-    def student_name(self):
-        return f"My name is {self.name}"
+# class Students:
+#     ssl = 12
+#     def __init__(self, name, age, course):
+#         self.name = name
+#         self.age = age
+#         self.course = course
+#     def student_name(self):
+#         return f"My name is {self.name}"
 
-    @classmethod
-    def get_ssl(cls, a):
-        newssl = cls.add_numbers(a) + cls.ssl
-        return newssl
+#     @classmethod
+#     def get_ssl(cls, a):
+#         newssl = cls.add_numbers(a) + cls.ssl
+#         return newssl
 
-    @staticmethod
-    def add_numbers(b):
-        return 12+b
+#     @staticmethod
+#     def add_numbers(b):
+#         return 12+b
 
-    @property
-    def name(self):
-        # newname = self.__name + "Nano"
-        return self.__name
+#     @property
+#     def name(self):
+#         # newname = self.__name + "Nano"
+#         return self.__name
 
-    @name.setter
-    def name(self, name):
-        self.__name = name
+#     @name.setter
+#     def name(self, name):
+#         self.__name = name
 
-student1 = Students("John", 20, "Nano")
-print(student1.name)
+# student1 = Students("John", 20, "Nano")
+# print(student1.name)
 
-student1.name = "Jane"
-print(student1.name)
+# student1.name = "Jane"
+# print(student1.name)
 
 # student1 = Students("John", 20, "Nano")
 # print(student1.get_ssl(20))
+
+
+# inheritance, polymorphism, abstraction
+
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def info(self):
+        return f"My name is {self.name} and I am {self.age} years old."    
+    
+class Student(Person):
+    def __init__(self, name, age, course):
+        super().__init__(name, age)
+        self.course = course
+
+    def info(self):
+        return f" Hi{self.name} I am studying {self.age} years old and you are a student."
+
+class Teacher(Person):
+    def __init__(self, name, age, subject):
+        super().__init__(name, age)
+        self.subject = subject
+
+    def info(self):
+        return f" Hi {self.name} I am {self.age} years old and you are a teacher."
+
+person = Person("John", 20)
+student = Student("Jane", 22, "Nano")
+teacher = Teacher("Mike", 30, "Math")
+
+print(person.info())
+print(student.info())
+print(teacher.info())
+
+# print(type(student))
+# print(type(teacher))
+# print(type(person))
+
+typesofpeople = [person, student, teacher]
+
+for person in typesofpeople:
+    print(person.info())
